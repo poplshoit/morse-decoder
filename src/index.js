@@ -38,7 +38,17 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    let arr = [],
+        result = [];
+
+    expr.match(/.{1,10}/g).forEach(elem => arr.push(String(+elem).replace(/10/g,".").replace(/11/g,"-").replace(/\*\*\*\*\*\*\*\*\*\*/g, " ")));
+        arr.forEach(elem =>  {
+            elem === "NaN" ?
+            result.push(" ") :
+        result.push(MORSE_TABLE[elem]);
+        })
+        
+    return result.join("");
 }
 
 module.exports = {
